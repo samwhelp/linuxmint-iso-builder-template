@@ -108,7 +108,6 @@ TARGET_UBUNTU_VERSION="resolute"
 
 # This is the apt source for both the build process and the live system.
 # It can be any Ubuntu mirror that you prefer.
-# The default is the Aiursoft mirror.
 # You can change it to any other mirror that you prefer.
 APT_SOURCE="http://archive.ubuntu.com/ubuntu/"
 
@@ -141,7 +140,7 @@ TARGET_PACKAGE_REMOVE="
 # LinuxMint PKG server configuration
 #============================
 
-# PKG server URL for LinuxMint-branded overlay packages (dev: apkg-dev.aiursoft.com).
+# PKG server URL for LinuxMint-branded overlay packages.
 PKG_SERVER="http://packages.linuxmint.com"
 
 # GPG certificate name on the PKG server (used to download and verify the repo).
