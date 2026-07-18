@@ -12,6 +12,7 @@
 ## Subject
 
 * [Respin](#respin)
+* [Live Account](#live-account)
 * [Link](#link)
 
 
@@ -25,6 +26,32 @@
 | [linuxmint-iso-builder-remix-cinnamon](https://github.com/samwhelp/linuxmint-iso-builder-remix-cinnamon) | [linuxmint-iso-builder-respin-cinnamon](https://github.com/samwhelp/linuxmint-iso-builder-respin-cinnamon) |
 | [linuxmint-iso-builder-remix-mate](https://github.com/samwhelp/linuxmint-iso-builder-remix-mate) | [linuxmint-iso-builder-respin-mate](https://github.com/samwhelp/linuxmint-iso-builder-respin-mate) |
 | [linuxmint-iso-builder-remix-xfce](https://github.com/samwhelp/linuxmint-iso-builder-remix-xfce) | [linuxmint-iso-builder-respin-xfce](https://github.com/samwhelp/linuxmint-iso-builder-respin-xfce) |
+
+
+
+
+## Live Account
+
+| Account  | Value  |
+| -------- | ------ |
+| Username | `live` |
+| Password |        |
+
+> No password set
+
+
+To change the password for the current account, you can run the following command:
+
+``` sh
+sudo passwd $(whoami)
+```
+
+
+To remove the password for the current account, you can run the following command:
+
+``` sh
+sudo passwd -d $(whoami)
+```
 
 
 
