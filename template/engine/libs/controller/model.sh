@@ -602,6 +602,7 @@ __EOF__
 function sys_add_linuxmint_apt_preferences () {
 
 	print_info "Config LinuxMint apt preferences ..."
+	mkdir -p "${DISTRO_IMG_DIR_PATH}/etc/apt/preferences.d"
 cat << __EOF__ | tee "${DISTRO_IMG_DIR_PATH}/etc/apt/preferences.d/linuxmint.pref"  > /dev/null 2>&1
 Package: *
 Pin: origin live.linuxmint.com
