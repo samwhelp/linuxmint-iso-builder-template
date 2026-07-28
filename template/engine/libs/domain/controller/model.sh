@@ -1049,7 +1049,7 @@ EOF
 		-r -J \
 		-iso-level 3 \
 		-full-iso9660-filenames \
-		-volid "${TARGET_ISO_VOLID}" \
+		-volid "${TARGET_ISO_VOLID^^}" \
 		-eltorito-boot boot/grub/bios.img \
 			-no-emul-boot \
 			-boot-load-size 4 \
