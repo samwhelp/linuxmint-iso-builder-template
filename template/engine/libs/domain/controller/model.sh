@@ -244,10 +244,10 @@ function sys_create_core_system () {
 	judge "Create build directory"
 
 
-	print_info "Calling debootstrap to download base debian system ..."
-	#debootstrap  --arch=amd64 --variant=minbase --include=ca-certificates,wget,dbus "${TARGET_UBUNTU_VERSION}" "${DISTRO_IMG_DIR_PATH}" "${APT_SOURCE}"
-	debootstrap  --arch=amd64 --variant=minbase --include=ca-certificates,openssl,console-setup-linux,console-setup,locales,tzdata,wget,dbus "${TARGET_UBUNTU_VERSION}" "${DISTRO_IMG_DIR_PATH}" "${APT_SOURCE}"
-	judge "Download base system"
+	print_info "Creating base system via debootstrap ..."
+	echo debootstrap  --arch=amd64 --variant=minbase --include=ca-certificates,openssl,console-setup-linux,console-setup,locales,tzdata,whiptail,wget,dbus "${TARGET_UBUNTU_VERSION}" "${DISTRO_IMG_DIR_PATH}" "${APT_SOURCE}"
+	debootstrap  --arch=amd64 --variant=minbase --include=ca-certificates,openssl,console-setup-linux,console-setup,locales,tzdata,whiptail,wget,dbus "${TARGET_UBUNTU_VERSION}" "${DISTRO_IMG_DIR_PATH}" "${APT_SOURCE}"
+	judge "Creating base system via debootstrap"
 
 }
 
