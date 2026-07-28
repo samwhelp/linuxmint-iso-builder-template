@@ -1078,7 +1078,7 @@ EOF
 	judge "Move iso image"
 
 	print_info "Generating sha256 checksum ..."
-	local HASH=$(sha256sum "${build_iso_file_path}" | cut -d ' ' -f 1)
+	local HASH=$(sha256sum "${dist_iso_file_path}" | cut -d ' ' -f 1)
 	echo "SHA256: ${HASH}" | tee "${sha256_file_path}" > /dev/null 2>&1
 	judge "Generate sha256 checksum"
 
