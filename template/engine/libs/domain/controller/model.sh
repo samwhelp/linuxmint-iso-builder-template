@@ -239,11 +239,7 @@ function raw_unmount () {
 
 }
 
-function sys_mount () {
-	raw_mount
-}
-
-function sys_unmount () {
+function wise_unmount () {
 
 	print_info "Unmounting ..."
 
@@ -254,6 +250,18 @@ function sys_unmount () {
 		path="${DISTRO_ISO_DIR_PATH}/${node}"
 		try_unmount "${path}"
 	done
+
+}
+
+function sys_mount () {
+
+	raw_mount
+
+}
+
+function sys_unmount () {
+
+	wise_unmount
 
 }
 
