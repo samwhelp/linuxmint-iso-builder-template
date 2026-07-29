@@ -139,7 +139,7 @@ function raw_unmount_before_clean () {
 
 }
 
-function sys_unmount_before_clean () {
+function wise_unmount_before_clean () {
 
 	local node=""
 	local path=""
@@ -154,6 +154,12 @@ function sys_unmount_before_clean () {
 		try_unmount "${path}"
 	done
 
+
+}
+
+function sys_unmount_before_clean () {
+
+	wise_unmount_before_clean
 
 }
 
