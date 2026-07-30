@@ -236,12 +236,14 @@ function raw_mount () {
 
 	mount --bind /dev "${DISTRO_IMG_DIR_PATH}/dev" || true
 	mount --bind /run "${DISTRO_IMG_DIR_PATH}/run" || true
-	judge "Mount /dev /run"
+	##judge "Mount /dev /run"
 
 	chroot "${DISTRO_IMG_DIR_PATH}" mount none -t proc /proc || true
 	chroot "${DISTRO_IMG_DIR_PATH}" mount none -t sysfs /sys || true
 	chroot "${DISTRO_IMG_DIR_PATH}" mount none -t devpts /dev/pts || true
-	judge "Mount /proc /sys /dev/pts"
+	##judge "Mount /proc /sys /dev/pts"
+
+	print_info "Mount end."
 
 }
 
