@@ -135,23 +135,41 @@ function raw_unmount_before_clean () {
 	umount "${DISTRO_IMG_DIR_PATH}/dev" || umount -lf "${DISTRO_IMG_DIR_PATH}/dev" || true
 	umount "${DISTRO_IMG_DIR_PATH}/run" || umount -lf "${DISTRO_IMG_DIR_PATH}/run" || true
 
-	umount "${DISTRO_ISO_DIR_PATH}/isolinux/efi" || sudo umount -lf "${DISTRO_ISO_DIR_PATH}/isolinux/efi" || true
+	umount "${DISTRO_ISO_DIR_PATH}/isolinux/efi" || umount -lf "${DISTRO_ISO_DIR_PATH}/isolinux/efi" || true
 
 }
 
-function wise_unmount_before_clean () {
+function check_unmount_before_clean () {
 
 	local node=""
 	local path=""
 
 	for node in "proc sys dev/pts dev run"; do
 		path="${DISTRO_IMG_DIR_PATH}/${node}"
-		try_unmount "${path}"
+		check_unmount_node "${path}"
 	done
 
 	for node in "isolinux/efi"; do
 		path="${DISTRO_ISO_DIR_PATH}/${node}"
-		try_unmount "${path}"
+		check_unmount_node "${path}"
+	done
+
+
+}
+
+function try_unmount_before_clean () {
+
+	local node=""
+	local path=""
+
+	for node in proc sys dev/pts dev run; do
+		path="${DISTRO_IMG_DIR_PATH}/${node}"
+		try_unmount_node "${path}"
+	done
+
+	for node in isolinux/efi; do
+		path="${DISTRO_ISO_DIR_PATH}/${node}"
+		try_unmount_node "${path}"
 	done
 
 
@@ -159,18 +177,27 @@ function wise_unmount_before_clean () {
 
 function sys_unmount_before_clean () {
 
-	wise_unmount_before_clean
+	##raw_unmount_before_clean
+	##try_unmount_before_clean
+	check_unmount_before_clean
 
 }
 
-function try_unmount () {
+function check_unmount_node () {
 
 	local path="${1}"
 
 	if mountpoint -q "${path}"; then
 		umount "${path}" || umount -lf "${path}" || true
-		sync
 	fi
+
+}
+
+function try_unmount_node () {
+
+	local path="${1}"
+
+	umount "${path}" || umount -lf "${path}" || true
 
 }
 
@@ -246,7 +273,7 @@ function raw_unmount () {
 
 }
 
-function wise_unmount () {
+function check_unmount () {
 
 	print_info "Unmounting ..."
 
@@ -255,10 +282,25 @@ function wise_unmount () {
 
 	for node in "proc sys dev/pts dev run"; do
 		path="${DISTRO_IMG_DIR_PATH}/${node}"
-		try_unmount "${path}"
+		check_unmount_node "${path}"
 	done
 
 }
+
+function try_unmount () {
+
+	print_info "Unmounting ..."
+
+	local node=""
+	local path=""
+
+	for node in proc sys dev/pts dev run; do
+		path="${DISTRO_IMG_DIR_PATH}/${node}"
+		try_unmount_node "${path}"
+	done
+
+}
+
 
 function sys_mount () {
 
@@ -268,7 +310,9 @@ function sys_mount () {
 
 function sys_unmount () {
 
-	wise_unmount
+	##raw_unmount
+	##try_unmount
+	check_unmount
 
 }
 
