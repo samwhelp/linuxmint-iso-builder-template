@@ -966,6 +966,11 @@ function sys_archive_system_to_iso () {
 
 	touch "${DISTRO_ISO_DIR_PATH}/${TARGET_NAME}"
 
+
+	##
+	## ## create grub.cfg
+	##
+
 	cat << EOF > "${DISTRO_ISO_DIR_PATH}/isolinux/grub.cfg"
 
 search --set=root --file /${TARGET_NAME}
