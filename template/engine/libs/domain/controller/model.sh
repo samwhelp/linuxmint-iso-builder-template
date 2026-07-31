@@ -149,7 +149,7 @@ function let_unmount_before_clean () {
 		let_unmount_node "${path}"
 	done
 
-	for node in "isolinux/efi"; do
+	for node in isolinux/efi; do
 		path="${DISTRO_ISO_DIR_PATH}/${node}"
 		let_unmount_node "${path}"
 	done
