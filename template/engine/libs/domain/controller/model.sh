@@ -710,7 +710,7 @@ function sys_add_linuxmint_apt_sources () {
 	mkdir -p "${DISTRO_IMG_DIR_PATH}/etc/apt/sources.list.d"
 cat << __EOF__ | tee "${DISTRO_IMG_DIR_PATH}/etc/apt/sources.list.d/linuxmint.sources" > /dev/null 2>&1
 Types: deb
-URIs: http://packages.linuxmint.com/
+URIs: ${PKG_SERVER}
 Suites: alfa
 Components: main upstream import backport
 Architectures: amd64
